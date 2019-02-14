@@ -1,3 +1,6 @@
+#Author: Behzad Moumbeini
+#how to run: python bam_to_wig.py -o outfile infile.bam
+
 import os
 import HTSeq
 import argparse
