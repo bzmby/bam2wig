@@ -6,8 +6,6 @@ import HTSeq
 import argparse
 
 
-
-#Create an empty genomic array using the header dictionary of the input BAM file
 def empty_array_from_file(bam_file,stranded=True, typecode="i"):
 	cov_array=HTSeq.GenomicArray("auto", stranded = stranded, typecode = typecode)	
 	myheader = HTSeq.BAM_Reader(bam_file).get_header_dict()
@@ -31,7 +29,7 @@ def load_array (Gen_array,infile):
 						continue
 
 
-#Write a track in wiggle format from an unstranded GenomicArray and normalize by a factor (default=1, no normalization)
+#Write a track in wiggle format from an unstranded GenomicArray and normalize by a factor
 def write_wig_track(cov_array,outprefix,norm_factor=1):
 	strands = ['+', '-'] if cov_array.stranded else ["."]
 	for strand in strands:
@@ -73,8 +71,6 @@ def write_wig_track(cov_array,outprefix,norm_factor=1):
 
 
 
-
-#Main function
 def main():
 	parser=argparse.ArgumentParser(description='Makes a coverage track from unpaired stranded bam files')
 	parser.add_argument('infile',help='BAM file')
